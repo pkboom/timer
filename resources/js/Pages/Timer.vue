@@ -118,14 +118,8 @@ function useHotKeys(e) {
   if (e.code === 'Space') {
     e.preventDefault()
 
-    timer.value ? stop() : start(input.value === 25 ? 5 : 25)
+    timer.value ? stop() : start(input.value === 25 ? 10 : 25)
   }
-
-  //   if (e.key === 'f') {
-  //     e.preventDefault()
-
-  //     timer.value ? stop() : start(5)
-  //   }
 }
 
 function defaultFavicon() {
