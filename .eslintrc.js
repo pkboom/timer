@@ -1,9 +1,4 @@
 module.exports = {
-  env: {
-    amd: true,
-    browser: true,
-    es6: true,
-  },
   extends: ['eslint:recommended', 'plugin:vue/vue3-recommended'],
   parserOptions: {
     sourceType: 'module',
