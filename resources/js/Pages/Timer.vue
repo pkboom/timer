@@ -1,6 +1,6 @@
 <template>
   <Head title="Timer" />
-  <div class="flex min-h-screen flex-col items-center justify-center space-y-4">
+  <div class="flex min-h-screen flex-col items-center justify-center space-y-4" style="padding-left: 500px">
     <div class="flex items-center space-x-2 text-6xl">
       <span>{{ displayMinutes }}</span>
       <span class="mb-2">:</span>
