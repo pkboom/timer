@@ -39,7 +39,7 @@ const seconds = ref(0)
 const input = ref(0)
 
 const displayMinutes = computed(() => {
-  return minutes.value
+  return minutes.value < 0 ? minutes.value - 1 : minutes.value
 })
 
 const displaySeconds = computed(() => {
