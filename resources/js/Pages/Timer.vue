@@ -39,11 +39,13 @@ const seconds = ref(0)
 const input = ref(0)
 
 const displayMinutes = computed(() => {
-  return minutes.value < 0 ? minutes.value - 1 : minutes.value
+  return minutes.value < 0 ? minutes.value + 1 : minutes.value
 })
 
 const displaySeconds = computed(() => {
-  return seconds.value.toString().padStart(2, '0')
+  let _seconds = seconds.value < 0 ? seconds.value * -1 : seconds.value
+
+  return _seconds.toString().padStart(2, '0')
 })
 
 onMounted(() => {
