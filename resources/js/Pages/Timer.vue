@@ -8,7 +8,7 @@
     </div>
     <div class="grid grid-cols-3 gap-4">
       <button
-        v-for="min in [5, 10, 25, 60]"
+        v-for="min in durations"
         :key="min"
         type="button"
         class="border rounded-lg border-gray-400 px-8 py-4 text-3xl hover:border-indigo-500 hover:text-indigo-500"
@@ -37,9 +37,10 @@ const timer = ref(null)
 const minutes = ref(0)
 const seconds = ref(0)
 const input = ref(0)
+const durations = [5, 10, 25, 60]
 
 const displayMinutes = computed(() => {
-  return minutes.value < 0 ? minutes.value + 1 : minutes.value
+  return minutes.value
 })
 
 const displaySeconds = computed(() => {
@@ -78,9 +79,6 @@ function start(duration = 0) {
     now = new Date().getTime()
 
     if (timesUp - now < 0 && count++ % 9 === 0) {
-      console.log({ count })
-      console.log('Times up')
-
       timesUpFavicon()
 
       document
@@ -117,10 +115,20 @@ function stop() {
 }
 
 function useHotKeys(e) {
+  if (durations[parseInt(e.key) - 1]) {
+    e.preventDefault()
+
+    timer.value ? stop() : start(durations[parseInt(e.key) - 1])
+  }
+
   if (e.code === 'Space') {
     e.preventDefault()
 
-    timer.value ? stop() : start(input.value === 25 ? 5 : 25)
+    let _durations = [5, 10, 25]
+    let index = _durations.indexOf(input.value)
+
+    timer.value ? stop() : start(_durations[(index + 1) % _durations.length])
+    // timer.value ? stop() : start(input.value === 25 ? 5 : 25)
   }
 }
 
